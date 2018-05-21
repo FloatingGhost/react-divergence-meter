@@ -21,10 +21,39 @@ export default class Divergence extends React.Component {
     render() {
         return (
             <div className="divergence-meter">
-                { this.props.value.toString().split("").map((digit, index) => (
-                    <img key={index} src={Digits[this.mapDigitToNixie(digit)]} />
-                ))}
+                { this.props.value.toString().split("").map((digit, index) => {
+                    if (digit == ".") {
+                        return <img key={index} src={Digits["11"]} />
+                    }
+                    return <TickDigit key={index} value={digit} />
+                })}
             </div>
         );
+    }
+}
+
+class TickDigit extends React.Component {
+    static propTypes = {
+        value: PropTypes.string
+    }
+
+    state = { current: (Math.floor(Math.random() * 10)).toString() }
+
+    render() {
+        let next_value;
+
+        if (this.state.current != this.props.value) {
+            if (this.state.current == "10") {
+                next_value = "0";
+            } else {
+                next_value = (parseInt(this.state.current) + 1).toString();
+            }
+            setTimeout(() => this.setState({ current: next_value }), 50);
+        }
+
+        return (
+            <img src={Digits[this.state.current]} />
+        );
+        
     }
 }
