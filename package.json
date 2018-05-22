@@ -1,13 +1,17 @@
 {
   "name": "react-divergence-meter",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A little JS replica of steins;gate's divergence meter",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FloatingGhost/react-divergence-meter"
+  },
+  "author": "Hannah Ward",
   "license": "ISC",
   "dependencies": {
     "react": "^16.3.2"
